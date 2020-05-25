@@ -76,8 +76,6 @@ local   0.000GB
 
 ```
 
-You can now access the deployed service by opening your web browser to `http://localhost:8080`.
-
 ## Destroy the deployed resources
 
 To destroy all resources created by the example, just run `terraform destroy`.
