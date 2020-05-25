@@ -57,18 +57,19 @@ kubernetes   ClusterIP   10.4.16.1     <none>        443/TCP     53m
 mongodb      ClusterIP   10.4.23.187   <none>        27017/TCP   47m
 
 ```
+## MongoDB Password
 
 ```
-Passowrd
+> export MONGODB_ROOT_PASSWORD=$(kubectl get secret --namespace default mongodb -o jsonpath="{.data.mongodb-root-password}" | base64 --decode)
+````
 
-export MONGODB_ROOT_PASSWORD=$(kubectl get secret --namespace default my-release-mongodb -o jsonpath="{.data.mongodb-root-password}" | base64 --decode)
-
-To connect to Database
-
-kubectl run --namespace default my-release-mongodb-client --rm --tty -i --restart='Never' --image docker.io/bitnami/mongodb:4.2.7-debian-10-r0 --command -- mongo admin --host my-release-mongodb --authenticationDatabase admin -u root -p $MONGODB_ROOT_PASSWORD
+## To connect to Database
+````
+> kubectl run --namespace default my-release-mongodb-client --rm --tty -i --restart='Never' --image docker.io/bitnami/mongodb:4.2.7-debian-10-r0 --command -- mongo admin --host mongodb --authenticationDatabase admin -u root -p $MONGODB_ROOT_PASSWORD
+`````
 
 now you can execute mongodb commands
-
+```
 > show dbs
 admin   0.000GB
 config  0.000GB
