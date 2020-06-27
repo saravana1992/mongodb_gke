@@ -269,9 +269,9 @@ resource "kubernetes_cluster_role_binding" "user" {
 resource "helm_release" "mongodb" {
   depends_on = [google_container_node_pool.node_pool]
 
-  repository = "https://charts.bitnami.com/bitnami"
-  name       = "mongodb"
-  chart      = "mongodb"
+  repository = "https://kubernetes-charts.storage.googleapis.com/"
+  name       = "mongodb-replica"
+  chart      = "stable/mongodb-replicaset"
 }
 
 # ---------------------------------------------------------------------------------------------------------------------
