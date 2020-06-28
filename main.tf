@@ -271,11 +271,7 @@ resource "helm_release" "mongodb" {
 
   repository = "https://kubernetes-charts.storage.googleapis.com/"
   name       = "mongodb-replica"
-<<<<<<< HEAD
   chart      = "mongodb-replicaset"
-=======
-  chart      = "stable/mongodb-replicaset"
->>>>>>> 6f91df1e64714ae0c29a99449ef6c60cf7185b91
 }
 
 # ---------------------------------------------------------------------------------------------------------------------
