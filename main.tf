@@ -208,7 +208,7 @@ resource "random_string" "suffix" {
 }
 
 module "vpc_network" {
-  source = "github.com/gruntwork-io/terraform-google-network.git//modules/vpc-network?ref=v0.4.0"
+  source = "github.com/gruntwork-io/terraform-google-network.git/modules/vpc-network"
 
   name_prefix = "${var.cluster_name}-network-${random_string.suffix.result}"
   project     = var.project
@@ -269,9 +269,9 @@ resource "kubernetes_cluster_role_binding" "user" {
 resource "helm_release" "mongodb" {
   depends_on = [google_container_node_pool.node_pool]
 
-  repository = "https://charts.bitnami.com/bitnami"
-  name       = "mongodb"
-  chart      = "mongodb"
+  repository = "https://kubernetes-charts.storage.googleapis.com/"
+  name       = "mongodb-replica"
+  chart      = "mongodb-replicaset"
 }
 
 # ---------------------------------------------------------------------------------------------------------------------
